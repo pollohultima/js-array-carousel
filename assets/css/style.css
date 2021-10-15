@@ -5,3 +5,8 @@
 .col-10>img {
     width: 100%!important;
 }
+
+.caption {
+    bottom: 1.5rem;
+    right: 1rem;
+}
