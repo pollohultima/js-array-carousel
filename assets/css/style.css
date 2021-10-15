@@ -1,0 +1,7 @@
+.container {
+    width: 840px!important;
+}
+
+.col-10>img {
+    width: 100%!important;
+}
