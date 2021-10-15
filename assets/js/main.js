@@ -47,3 +47,57 @@ const [textSvizzera] = text
 
 const svizzeraSelection = [itemTwo, svizzera, textSvizzera]
 console.log(svizzeraSelection);
+
+/* const itemsRef = document.querySelector(' .items');
+const thumbRef = document.querySelector(' .thumbs')
+
+let item = "";
+let thumb = "";
+let position = "";
+
+for (let i = 0; i <= items.length; i++) {
+
+    item += `
+    <div class="item">
+        <img src = "${items[i]}"
+        <div class= "text">
+            <h3>${title[i]}</h3>
+            <p>"${text[i]}"</p>
+        </div>
+    </div>
+    `;
+    thumb += `
+    <div class= "thumb">
+        <img src = "${items[i]}"
+    </div>`;
+}
+
+itemsRef.innerHTML = item;
+document.getElementsByClassName('item')[position].classlist.add('active');
+
+itemsRef.innerHTML += thumb;
+document.getElementsByClassName('item')[position].classlist.add('active');
+
+const prev = document.querySelector(' .prev');
+prev.addEventListener('click', function () {
+    if (position > 0) {
+        --position;
+    }
+    document.querySelector('.item.active').classList.remove('active')
+    document.getElementsByClassName('item')[position].classList.add('active');
+
+    document.querySelector('.thumb.active').classList.remove('active')
+    document.getElementsByClassName('thumb')[position].classList.add('active');
+});
+
+const next = document.querySelector(' .next');
+next.addEventListener('click', function () {
+    if (position < items.length) {
+        ++position;
+    }
+    document.querySelector('.item.active').classList.remove('active')
+    document.getElementsByClassName('item')[position].classList.add('active');
+
+    document.querySelector('.thumb.active').classList.remove('active')
+    document.getElementsByClassName('thumb')[position].classList.add('active');
+}); */
