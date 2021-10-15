@@ -10,3 +10,20 @@
     bottom: 1.5rem;
     right: 1rem;
 }
+
+.up {
+    top: 2rem;
+}
+
+.down {
+    bottom: .2rem;
+}
+
+button {
+    border-radius: 47%!important;
+}
+
+.same_height {
+    width: 100%;
+    height: calc(100% / 5);
+}
