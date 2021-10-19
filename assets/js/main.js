@@ -41,20 +41,7 @@ const nextElement = document.querySelector(' .next');
 
 //Initialize var
 let activeItem = 0
-//img = items[0];
-//title = title [0];
-//news = text [0];
 
-console.log(items[activeItem], title[activeItem], text[activeItem]);
-
-/* let element = `
-  <img src="./assets/${items[activeItem]}" alt="">
-    <div class="text">
-        <h2>${title[activeItem]}</h2>
-        <p>${text[activeItem]}</p>
-    </div>`
-
-previewElement.innerHTML = element; */
 
 // Render all thumbnails
 for (let index = 0; index < items.length; index++) {
@@ -99,20 +86,8 @@ prevElement.addEventListener('click', function () {
         activeItem = activeItem - 1;
     }
 
-    //Overwrite Dom element
-    /*     element = `
-        <img src="./assets/${items[activeItem]}" alt="">
-        <div class="text">
-            <h2>${title[activeItem]}</h2>
-            <p>${text[activeItem]}</p>
-        </div>` */
-    //render the new element
-    /*  previewElement.innerHTML = element; */
-
-
     document.querySelector('.preview__item.active').classList.remove('active')
     document.getElementsByClassName('preview__item')[activeItem].classList.add('active')
-
 
     //deselct the current activeThumb
     document.querySelector('.thumb_image.activeThumb').classList.remove('activeThumb');
@@ -126,23 +101,13 @@ prevElement.addEventListener('click', function () {
 nextElement.addEventListener('click', function () {
 
     //check if the active item is at last element
-    if (activeItem == items.lenght - 1) {
+    if (activeItem == items.length - 1) {
         activeItem = 0;
     }
     //increment active element
     else {
         activeItem = activeItem + 1;
     }
-
-    //Overwrite Dom element
-    /*     element = `
-        <img src="./assets/${items[activeItem]}" alt="">
-        <div class="text">
-            <h2>${title[activeItem]}</h2>
-            <p>${text[activeItem]}</p>
-        </div>` */
-    //render the new element
-    /* previewElement.innerHTML = element; */
 
     document.querySelector('.preview__item.active').classList.remove('active')
     document.getElementsByClassName('preview__item')[activeItem].classList.add('active')
