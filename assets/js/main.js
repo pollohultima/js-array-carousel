@@ -22,82 +22,138 @@ const text = [
     'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,',
 ]
 
-const asideImg = document.querySelector('.aside');
 
-for (let i = 1; i <= items.length; i++) {
-    const showImage = `<img src="./assets/img/0${i}.jpg" alt="" class="same_height"></img>`;
-    asideImg.innerHTML += showImage;
-}
+/*
+STRUMENTI
+- array
+- eventListener
+- for
+- if
+- querySelector/getElementById/altri
+*/
 
+//DOM
 
+const previewElement = document.querySelector(' .preview');
+const thumbsElement = document.querySelector(' .thumbs');
+const prevElement = document.querySelector(' .prev');
+const nextElement = document.querySelector(' .next');
 
+//Initialize var
+let activeItem = 0
+//img = items[0];
+//title = title [0];
+//news = text [0];
 
-const [itemOne] = items
-const [sweden] = title
-const [textSweden] = text
+console.log(items[activeItem], title[activeItem], text[activeItem]);
 
-const swedenSelection = [itemOne, sweden, textSweden]
-console.log(swedenSelection);
+/* let element = `
+  <img src="./assets/${items[activeItem]}" alt="">
+    <div class="text">
+        <h2>${title[activeItem]}</h2>
+        <p>${text[activeItem]}</p>
+    </div>`
 
-const [itemTwo] = items
+previewElement.innerHTML = element; */
 
-const [svizzera] = title
-const [textSvizzera] = text
+// Render all thumbnails
+for (let index = 0; index < items.length; index++) {
 
+    const image_path = items[index];
 
-const svizzeraSelection = [itemTwo, svizzera, textSvizzera]
-console.log(svizzeraSelection);
-
-/* const itemsRef = document.querySelector(' .items');
-const thumbRef = document.querySelector(' .thumbs')
-
-let item = "";
-let thumb = "";
-let position = "";
-
-for (let i = 0; i <= items.length; i++) {
-
-    item += `
-    <div class="item">
-        <img src = "${items[i]}"
-        <div class= "text">
-            <h3>${title[i]}</h3>
-            <p>"${text[i]}"</p>
+    //Render all iamges and text
+    let element = `
+    <div class="preview__item">
+    <img src="./assets/${items[index]}" alt="">
+        <div class="text">
+            <h2>${title[index]}</h2>
+            <p>${text[index]}</p>
         </div>
-    </div>
-    `;
-    thumb += `
-    <div class= "thumb">
-        <img src = "${items[i]}"
-    </div>`;
+    </div>`
+    previewElement.insertAdjacentHTML('beforeend', element)
+
+
+    //Render thumbs
+
+    const thumbImage = `
+    <img class="thumb_image" src="./assets/${image_path}">`
+
+    thumbsElement.insertAdjacentHTML('beforeend', thumbImage)
+
 }
+document.getElementsByClassName('thumb_image')[activeItem].classList.add('activeThumb');
+document.getElementsByClassName('preview__item')[activeItem].classList.add('active')
 
-itemsRef.innerHTML = item;
-document.getElementsByClassName('item')[position].classlist.add('active');
 
-itemsRef.innerHTML += thumb;
-document.getElementsByClassName('item')[position].classlist.add('active');
+// Event Listeners
 
-const prev = document.querySelector(' .prev');
-prev.addEventListener('click', function () {
-    if (position > 0) {
-        --position;
+//decremento valore di active item
+prevElement.addEventListener('click', function () {
+
+    //check if the active item === 0
+    if (activeItem == 0) {
+        activeItem = items.length - 1;
     }
-    document.querySelector('.item.active').classList.remove('active')
-    document.getElementsByClassName('item')[position].classList.add('active');
-
-    document.querySelector('.thumb.active').classList.remove('active')
-    document.getElementsByClassName('thumb')[position].classList.add('active');
-});
-
-const next = document.querySelector(' .next');
-next.addEventListener('click', function () {
-    if (position < items.length) {
-        ++position;
+    //decrement active element
+    else {
+        activeItem = activeItem - 1;
     }
-    document.querySelector('.item.active').classList.remove('active')
-    document.getElementsByClassName('item')[position].classList.add('active');
 
-    document.querySelector('.thumb.active').classList.remove('active')
-    document.getElementsByClassName('thumb')[position].classList.add('active');
-}); */
+    //Overwrite Dom element
+    /*     element = `
+        <img src="./assets/${items[activeItem]}" alt="">
+        <div class="text">
+            <h2>${title[activeItem]}</h2>
+            <p>${text[activeItem]}</p>
+        </div>` */
+    //render the new element
+    /*  previewElement.innerHTML = element; */
+
+
+    document.querySelector('.preview__item.active').classList.remove('active')
+    document.getElementsByClassName('preview__item')[activeItem].classList.add('active')
+
+
+    //deselct the current activeThumb
+    document.querySelector('.thumb_image.activeThumb').classList.remove('activeThumb');
+
+    //select the new active thumb
+    document.getElementsByClassName('thumb_image')[activeItem].classList.add('activeThumb');
+})
+
+
+//incremento valore di active item
+nextElement.addEventListener('click', function () {
+
+    //check if the active item is at last element
+    if (activeItem == items.lenght - 1) {
+        activeItem = 0;
+    }
+    //increment active element
+    else {
+        activeItem = activeItem + 1;
+    }
+
+    //Overwrite Dom element
+    /*     element = `
+        <img src="./assets/${items[activeItem]}" alt="">
+        <div class="text">
+            <h2>${title[activeItem]}</h2>
+            <p>${text[activeItem]}</p>
+        </div>` */
+    //render the new element
+    /* previewElement.innerHTML = element; */
+
+    document.querySelector('.preview__item.active').classList.remove('active')
+    document.getElementsByClassName('preview__item')[activeItem].classList.add('active')
+
+    //deselct the current activeThumb
+    document.querySelector('.thumb_image.activeThumb').classList.remove('activeThumb');
+
+    //select the new active thumb
+    document.getElementsByClassName('thumb_image')[activeItem].classList.add('activeThumb');
+})
+
+
+
+
